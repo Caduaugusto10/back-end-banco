@@ -2,21 +2,35 @@
   "name": "back-end-tabela",
   "version": "1.0.0",
   "main": "index.js",
- "scripts": {
-  "start": "node server.js",
-  "dev": "nodemon server.js" 
-},
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
+    "@fast-csv/format": "^5.0.2",
     "cors": "^2.8.5",
+    "csv": "^6.3.11",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
-    "pg": "^8.14.1"
+    "multer": "^1.4.5-lts.2",
+    "pdfkit": "^0.17.0",
+    "pg": "^8.14.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Caduaugusto10/back-end-banco.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Caduaugusto10/back-end-banco/issues"
+  },
+  "homepage": "https://github.com/Caduaugusto10/back-end-banco#readme",
+  "description": ""
 }

@@ -1,6 +1,6 @@
 CREATE DATABASE hp;
 
-\c hp;
+\c hp; 
 
 CREATE TABLE houses (
     id SERIAL PRIMARY KEY,
