@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const houseController = require("../controllers/houseController");
+const apiKeyMiddleware =  require("../config/apiKey")
 
+router.use(apiKeyMiddleware);
 /**
  * @swagger
  * tags:
@@ -17,12 +19,9 @@ const houseController = require("../controllers/houseController");
  *     tags: [Houses]
  *     responses:
  *       200:
- *         description: Lista de casas.
- *       404:
- *         description: Casas nao encontradas.
+ *         description: Lista de casas
  */
 router.get("/", houseController.getAllHouses);
-
 
 /**
  * @swagger
@@ -43,9 +42,75 @@ router.get("/", houseController.getAllHouses);
  *         description: Casa não encontrada
  */
 router.get("/:id", houseController.getHouse);
+
+/**
+ * @swagger
+ * /api/houses:
+ *   post:
+ *     summary: Cria uma nova casa
+ *     tags: [Houses]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               founder:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Casa criada
+ */
 router.post("/", houseController.createHouse);
-router.put("/:id", houseController.updateHouse);
+
+/**
+ * @swagger
+ * /api/houses/{id}:
+ *   delete:
+ *     summary: Deleta uma casa
+ *     tags: [Houses]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Casa deletada
+ */
 router.delete("/:id", houseController.deleteHouse);
 
+/**
+ * @swagger
+ * /api/houses/{id}:
+ *   put:
+ *     summary: Atualiza uma casa
+ *     tags: [Houses]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               founder:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Casa atualizada
+ */
+router.put("/:id", houseController.updateHouse);
 
 module.exports = router;
